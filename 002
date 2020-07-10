@@ -1,0 +1,13 @@
+var fib1 = 1;
+var fib2 = 1;
+var pleasecontinue = true;
+var totalfib = 0;
+do {
+    fibnumber = fib1 + fib2;
+    fib1 = fib2;
+    fib2 = fibnumber;
+    
+    if (fibnumber >= 4000000){pleasecontinue = false;}
+    else if(fibnumber % 2 == 0) {totalfib += fibnumber;}
+    	
+} while (pleasecontinue == true)
