@@ -1,0 +1,13 @@
+MaxNum = 100
+SumOfSquares = 0
+SquareOfSums = 0
+
+For i = 1 To MaxNum
+	SumOfSquares = SumOfSquares + (i * i)
+	SquareOfSums = SquareOfSums + i
+Next
+SquareOfSums = SquareOfSums * SquareOfSums
+Difference = SquareOfSums - SumOfSquares
+MsgBox Difference & chr(13) & SumOfSquares & chr(13) & SquareOfSums
+
+'25164150
