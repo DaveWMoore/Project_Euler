@@ -1,0 +1,16 @@
+
+
+For a = 1 To 1000
+	For b = 1 To 1000
+		Pag1 = (a * a) + (b * b)
+		c = Sqr(Pag1)
+		If a + b + c = 1000 Then
+			FoundValue = a * b * c
+			sMsg = a & "-" & b & "-" & c
+		End If
+	Next
+Next
+
+MsgBox FoundValue & chr(13) & sMsg
+
+'31875000
