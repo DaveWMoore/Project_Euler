@@ -1,27 +1,32 @@
 
-var FirstNumber = 999;
-var SecondNumber = 999;
-var Product = 0;
-var Switch = 1;
+FirstNumber = 999
+SecondNumber = 999
+BiggestProduct = 0
 
-function IsPalindrome(FirstNumber, SecondNumber) {
-	var Product = 0;
-	var Backwards = "";
-	Product = FirstNumber * SecondNumber
-	Product = Product.toString();
-	for(i=Product.length;i>=0;i--){
-		Backwards = Backwards + Product.substr(i,1);
-	}
-	if (Product != Backwards) {Product = 0;}
-	return Product;
-}
+function IsPalindrome(i, j)
+	Backwards = ""
+	Product = i * j
+	Product = cStr(Product)
+	For k = len(Product) to 1 Step -1
+		Backwards = Backwards + Mid(Product,k,1)
+	Next
+	if Product <> Backwards Then
+		Product = 0
+	End If
+	
+	IsPalindrome = cDbl(Product)
+End Function
 
-for(FirstNumber = 999;FirstNumber>0; FirstNumber--;){
-	Product = IsPalindrome(FirstNumber, SecondNumber)
-    if (IsPalindrome(FirstNumber, SecondNumber) != 0) 
-    	{FirstNumber = 0;}
-    else {SecondNumber -= 1;
-    	if (IsPalindrome(FirstNumber, SecondNumber) != 0) 
-    	{FirstNumber = 0;}
-        }
-}
+For i = FirstNumber To 1 Step -1
+	For j = SecondNumber To 1 Step -1
+		Result = IsPalindrome(i, j)
+		If Result > BiggestProduct Then
+			BiggestProduct = Result
+			b1 = i
+			b2 = j
+		End If
+		
+	Next
+Next
+
+msgbox "Done: "  & BiggestProduct & chr(13) & b1 & chr(13) & b2
