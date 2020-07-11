@@ -1,0 +1,36 @@
+'Brute force
+REM bFound = false
+REM CoolNum = 2
+REM Do Until bFound = true
+	REM CoolNum = CoolNum + 1
+	REM TotDiv = 0
+	REM iDiv = 1
+	REM Do Until TotDiv > 0 Or iDiv > 20
+		REM iDiv = iDiv + 1
+		REM TotDiv = CoolNum Mod iDiv
+	REM Loop
+	REM If TotDiv = 0 Then
+		REM bFound = true
+	REM End If
+REM Loop
+REM MsgBox CoolNum & "-" & iDiv
+
+'232792560
+
+bFound = false
+CoolNum = 2520
+Do Until bFound = true
+	CoolNum = CoolNum + 1
+	TotDiv = 0
+	iDiv = 11
+	If CoolNum Mod 2520 = 0 Then
+		Do Until TotDiv > 0 Or iDiv > 20
+			TotDiv = TotDiv + (CoolNum Mod iDiv)
+			iDiv = iDiv + 1
+		Loop
+		If TotDiv = 0 Then
+			bFound = true
+		End If
+	End If
+Loop
+MsgBox CoolNum
