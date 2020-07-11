@@ -1,0 +1,27 @@
+
+var FirstNumber = 999;
+var SecondNumber = 999;
+var Product = 0;
+var Switch = 1;
+
+function IsPalindrome(FirstNumber, SecondNumber) {
+	var Product = 0;
+	var Backwards = "";
+	Product = FirstNumber * SecondNumber
+	Product = Product.toString();
+	for(i=Product.length;i>=0;i--){
+		Backwards = Backwards + Product.substr(i,1);
+	}
+	if (Product != Backwards) {Product = 0;}
+	return Product;
+}
+
+for(FirstNumber = 999;FirstNumber>0; FirstNumber--;){
+	Product = IsPalindrome(FirstNumber, SecondNumber)
+    if (IsPalindrome(FirstNumber, SecondNumber) != 0) 
+    	{FirstNumber = 0;}
+    else {SecondNumber -= 1;
+    	if (IsPalindrome(FirstNumber, SecondNumber) != 0) 
+    	{FirstNumber = 0;}
+        }
+}
