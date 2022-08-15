@@ -1,0 +1,38 @@
+
+'The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+'Find the sum of all the primes below two million.
+
+iPrimeSum = 0
+iMinFactor = 2
+iMaxFactor = 2000000
+
+
+Set objFSO=CreateObject("Scripting.FileSystemObject")
+sFileName="C:\Users\David.Moore\OneDrive - Arcoro Holdings Corp\Documents\GitHub\010\OutputFile_04.csv"
+Set objFile = objFSO.CreateTextFile(sFileName,True)
+objFile.Write "test string" & vbCrLf
+
+
+For iNumberToLookAt = iMinFactor To iMaxFactor
+	If IsPrime(iNumberToLookAt) = True Then
+		iPrimeSum = iPrimeSum + iNumberToLookAt
+		objFile.Writeline iNumberToLookAt & "," & iPrimeSum
+	End If
+Next
+
+objFile.Close
+MsgBox "Done!" & chr(13) & i & chr(13) & iPrimeSum
+
+
+'-----------------------------
+Function IsPrime(iNumberToLookAt)
+	iGoUpToThisNumber = Int(Sqr(iNumberToLookAt))
+	bResult = True
+	For i = 2 To iGoUpToThisNumber
+		If iNumberToLookAt Mod i = 0 Then
+			bResult = False
+			Exit For
+		End If
+	Next
+	IsPrime = bResult
+End Function
