@@ -1,0 +1,22 @@
+'Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+
+sLargeNumber = ""
+
+iSumOfNumber = cDbl(0)
+sFileName = "C:\Users\xxxx\Documents\GitHub\013\LargeNumberFile.txt"
+
+Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile(sFileName,1)
+Do While not objFileToRead.AtEndOfStream
+	sLine = cDbl(objFileToRead.ReadLine())
+	iCountOfLines = iCountOfLines + 1
+	iSumOfNumber = iSumOfNumber + cDbl(sLine)
+Loop
+objFileToRead.Close
+
+iSumOfNumber = cStr(iSumOfNumber)
+
+sFirstTen = Left(iSumOfNumber,11)
+sFirstTen = Replace(sFirstTen,".","")
+
+msgBox "----------------" & chr(13) & sFirstTen & chr(13) & "----------------"
+	
