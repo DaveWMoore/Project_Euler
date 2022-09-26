@@ -1,0 +1,56 @@
+'The following iterative sequence is defined for the set of positive integers:
+'n → n/2 (n is even)
+'n → 3n + 1 (n is odd)
+
+'Using the rule above and starting with 13, we generate the following sequence:
+'13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+
+'It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. 
+'Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
+'Which starting number, under one million, produces the longest chain?
+'NOTE: Once the chain starts the terms are allowed to go above one million.
+
+iLargestNumber = 999999
+iLargestNumber = cDbl(iLargestNumber)
+'iLargestNumber = 13
+iMinNumber = 1
+iNumWithLargestTerms = 0
+iLargestNumOfTerms = 0
+iCurrentTerms = 0
+iCurrentNumber = 0
+sEndMsg = ""
+
+For i = iLargestNumber To iMinNumber Step -1
+	bEnding = False
+	iCurrentNumber = cDbl(i)
+	iCurrentTerms = 1
+	
+	Do Until bEnding = True
+		'If iCurrentNumber Mod 2 = 0 Then
+		If Modulus(iCurrentNumber, 2) = 0 Then
+			iCurrentNumber = iCurrentNumber / 2
+		Else
+			iCurrentNumber = iCurrentNumber * 3 + 1
+		End If
+		iCurrentTerms = iCurrentTerms + 1
+		If iCurrentNumber = 1 Then bEnding = True
+	Loop
+	
+	If iCurrentTerms > iLargestNumOfTerms Then
+		iLargestNumOfTerms = iCurrentTerms
+		iNumWithLargestTerms = i
+	End If
+	
+
+Next
+
+sEndMsg = sEndMsg & "Num: " & iNumWithLargestTerms & chr(13)
+sEndMsg = sEndMsg & "# of terms: " & iLargestNumOfTerms
+
+
+MsgBox sEndMsg
+
+Function Modulus(InitialNumber, Divisor)
+	myInt = Int(InitialNumber / Divisor)
+	Modulus = InitialNumber - (myInt * Divisor)
+End Function
